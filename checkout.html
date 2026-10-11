@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout — Trade Sentinel Essential</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Trade Sentinel <span>Essential</span></a></div>
+            <a href="index.html" class="btn-secondary" style="padding: 6px 14px; font-size: 0.85rem;">← Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section container">
+        <div class="checkout-box">
+            <h2>Complete Your Order</h2>
+            <p class="checkout-subtitle">Choose your preferred payment method to unlock instant TradingView access.</p>
+
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span>Selected Plan:</span>
+                    <strong id="plan-name-display">Annually Plan</strong>
+                </div>
+                <div class="summary-row total">
+                    <span>Total Due:</span>
+                    <strong id="plan-price-display">$249.00</strong>
+                </div>
+            </div>
+
+            <!-- Вибір методу оплати -->
+            <div class="payment-methods-container">
+                <h3>Select Payment Method</h3>
+                
+                <!-- Оплата карткою (Payoneer) -->
+                <div class="payment-option">
+                    <input type="radio" id="pay-card" name="payment_method" checked>
+                    <label for="pay-card">
+                        <span class="pay-title">Credit / Debit Card (via Payoneer)</span>
+                        <span class="pay-desc">Secure payment with Visa, Mastercard, or Apple Pay.</span>
+                    </label>
+                </div>
+
+                <!-- Оплата криптовалютою (USDT) -->
+                <div class="payment-option">
+                    <input type="radio" id="pay-crypto" name="payment_method">
+                    <label for="pay-crypto">
+                        <span class="pay-title">Cryptocurrency (USDT TRC20 / BEP20)</span>
+                        <span class="pay-desc">Fast and direct crypto transfer with manual confirmation.</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Блок для картки -->
+            <div id="card-payment-details" class="payment-form-block active">
+                <p class="instruction-text">Clicking the button below will redirect you to our secure Payoneer checkout page to complete the transaction.</p>
+                <!-- Сюди пізніше вставите ваше посилання на оплату від Payoneer -->
+                <a href="https://your_payoneer_payment_link_here" target="_blank" class="btn-primary btn-large">Proceed to Payoneer Checkout</a>
+            </div>
+
+            <!-- Блок для крипти -->
+            <div id="crypto-payment-details" class="payment-form-block" style="display: none;">
+                <p class="instruction-text">Please send the exact amount to the USDT wallet address below, then contact us on Telegram with your TxID and TradingView username.</p>
+                
+                <div class="crypto-wallet-box">
+                    <span class="wallet-label">USDT (TRC20) Address:</span>
+                    <code>TGc9...YourWalletAddressHere...3xK9</code>
+                </div>
+                
+                <a href="https://t.me/YOUR_TELEGRAM" target="_blank" class="btn-primary btn-large crypto-btn">Confirm via Telegram Bot</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Trade Sentinel Essential. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Простий скрипт для перемикання методів оплати -->
+    <script>
+        const cardRadio = document.getElementById('pay-card');
+        const cryptoRadio = document.getElementById('pay-crypto');
+        const cardBlock = document.getElementById('card-payment-details');
+        const cryptoBlock = document.getElementById('crypto-payment-details');
+
+        cardRadio.addEventListener('change', () => {
+            if(cardRadio.checked) {
+                cardBlock.style.display = 'block';
+                cryptoBlock.style.display = 'none';
+            }
+        });
+
+        cryptoRadio.addEventListener('change', () => {
+            if(cryptoRadio.checked) {
+                cryptoBlock.style.display = 'block';
+                cardBlock.style.display = 'none';
+            }
+        });
+
+        // Автоматичне зчитування параметра ціни з головної сторінки (якщо передано)
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+        const price = urlParams.get('price');
+
+        if(plan && price) {
+            document.getElementById('plan-name-display').innerText = plan.charAt(0).toUpperCase() + plan.slice(1) + ' Plan';
+            document.getElementById('plan-price-display').innerText = '$' + price + (plan === 'monthly' ? '.00 / mo' : (plan === 'annually' ? '.00 / yr' : '.00'));
+        }
+    </script>
+</body>
+</html>
