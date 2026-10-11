@@ -356,3 +356,45 @@ footer {
     color: var(--text-color);
     line-height: 1.6;
 }
+
+/* --- Нові стилі для секції Intro (ОНОВЛЕНО) --- */
+
+/* Загальні класи для центрування */
+.centered-header {
+    text-align: center;
+    font-size: 2.5rem; /* однаковий великий розмір */
+    margin-bottom: 15px;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+/* Блок із заголовком та стрілками */
+.intro-header-with-arrows {
+    display: flex;
+    justify-content: center; /* центрування всього рядка */
+    align-items: center;
+    gap: 15px; /* відстань між стрілками та текстом */
+    margin: 40px 0 15px 0; /* відступи зверху та знизу */
+}
+
+.intro-header-with-arrows h3 {
+    font-size: 2.5rem; /* однаковий великий розмір */
+    margin: 0;
+}
+
+/* Клас для зменшення стрілок */
+.arrow-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+/* Текст під заголовком */
+.intro-subtext {
+    font-size: 1.15rem;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
