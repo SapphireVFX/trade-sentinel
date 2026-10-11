@@ -285,3 +285,58 @@ footer {
         flex-direction: column;
     }
 }
+
+/* Intro Marketing Section Styles */
+.intro-section {
+    padding: 80px 0 20px 0;
+}
+
+.intro-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+}
+
+.intro-box h2 {
+    font-size: 2.2rem;
+    color: var(--text-white);
+    margin-bottom: 20px;
+}
+
+.intro-lead {
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    color: var(--text-color);
+}
+
+.intro-lead strong {
+    color: var(--text-white);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.intro-item {
+    background: rgba(13, 17, 23, 0.5);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.intro-item h4 {
+    color: var(--text-white);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.intro-item p {
+    font-size: 0.95rem;
+}
