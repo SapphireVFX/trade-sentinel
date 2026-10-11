@@ -553,3 +553,147 @@ footer {
         flex-direction: column;
     }
 }
+
+/* --- Стилі для сторінки Checkout --- */
+.checkout-section {
+    padding: 60px 0 100px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.checkout-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 50px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.checkout-box h2 {
+    color: var(--text-white);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.checkout-subtitle {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.order-summary {
+    background: rgba(13, 17, 23, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.summary-row:last-child {
+    margin-bottom: 0;
+}
+
+.summary-row.total {
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.summary-row.total strong {
+    color: var(--accent-hover);
+}
+
+.payment-methods-container h3 {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(13, 17, 23, 0.4);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.payment-option:hover {
+    border-color: var(--text-color);
+}
+
+.payment-option input {
+    margin-top: 4px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.payment-option label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.pay-title {
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.pay-desc {
+    color: var(--text-color);
+    font-size: 0.85rem;
+    margin-top: 3px;
+}
+
+.payment-form-block {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 25px;
+}
+
+.instruction-text {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.crypto-wallet-box {
+    background: rgba(13, 17, 23, 0.8);
+    border: 1px dashed var(--border-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.wallet-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.crypto-wallet-box code {
+    color: var(--accent-hover);
+    font-family: monospace;
+    font-size: 1rem;
+    word-break: break-all;
+}
