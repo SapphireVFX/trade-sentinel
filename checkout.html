@@ -53,7 +53,7 @@
                 <div class="payment-option">
                     <input type="radio" id="pay-crypto" name="payment_method">
                     <label for="pay-crypto">
-                        <span class="pay-title">Cryptocurrency (USDT TRC20 / BEP20)</span>
+                        <span class="pay-title">Cryptocurrency (USDT TRC20)</span>
                         <span class="pay-desc">Fast and direct crypto transfer with manual confirmation.</span>
                     </label>
                 </div>
@@ -62,20 +62,37 @@
             <!-- Блок для картки -->
             <div id="card-payment-details" class="payment-form-block active">
                 <p class="instruction-text">Clicking the button below will redirect you to our secure Payoneer checkout page to complete the transaction.</p>
-                <!-- Сюди пізніше вставите ваше посилання на оплату від Payoneer -->
                 <a href="https://your_payoneer_payment_link_here" target="_blank" class="btn-primary btn-large">Proceed to Payoneer Checkout</a>
             </div>
 
-            <!-- Блок для крипти -->
+            <!-- Блок для крипти (з QR-кодом та кнопкою копіювання) -->
             <div id="crypto-payment-details" class="payment-form-block" style="display: none;">
-                <p class="instruction-text">Please send the exact amount to the USDT wallet address below, then contact us on Telegram with your TxID and TradingView username.</p>
+                <p class="instruction-text">Scan the QR code or copy the address below to send USDT (TRC20). After payment, confirm via Telegram.</p>
                 
-                <div class="crypto-wallet-box">
-                    <span class="wallet-label">USDT (TRC20) Address:</span>
-                    <code>TGc9...YourWalletAddressHere...3xK9</code>
+                <div class="crypto-box-binance">
+                    <!-- QR-код (генерація через публічний API за вашою адресою) -->
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=TUvuGkJ8F44F35JZPFnfoDWKkkhDqHE7gC" alt="USDT Wallet QR Code" class="qr-img">
+                    </div>
+                    
+                    <div class="wallet-info-area">
+                        <span class="wallet-label">Network: <strong>USDT (TRC20)</strong></span>
+                        <span class="wallet-label" style="margin-top: 8px;">Address:</span>
+                        
+                        <div class="wallet-row">
+                            <code id="wallet-address">TUvuGkJ8F44F35JZPFnfoDWKkkhDqHE7gC</code>
+                            <button class="copy-btn" onclick="copyWalletAddress()" title="Copy to clipboard">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span id="copy-tooltip">Copy</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
-                <a href="https://t.me/YOUR_TELEGRAM" target="_blank" class="btn-primary btn-large crypto-btn">Confirm via Telegram Bot</a>
+                <a href="https://t.me/YOUR_TELEGRAM" target="_blank" class="btn-primary btn-large crypto-btn" style="margin-top: 25px;">Confirm via Telegram Bot</a>
             </div>
 
         </div>
@@ -88,7 +105,7 @@
         </div>
     </footer>
 
-    <!-- Простий скрипт для перемикання методів оплати -->
+    <!-- Скрипти -->
     <script>
         const cardRadio = document.getElementById('pay-card');
         const cryptoRadio = document.getElementById('pay-crypto');
@@ -109,7 +126,19 @@
             }
         });
 
-        // Автоматичне зчитування параметра ціни з головної сторінки (якщо передано)
+        // Функція копіювання адреси гаманця
+        function copyWalletAddress() {
+            const addressText = document.getElementById('wallet-address').innerText;
+            navigator.clipboard.writeText(addressText).then(() => {
+                const tooltip = document.getElementById('copy-tooltip');
+                tooltip.innerText = 'Copied!';
+                setTimeout(() => {
+                    tooltip.innerText = 'Copy';
+                }, 2000);
+            });
+        }
+
+        // Зчитування параметра ціни з URL
         const urlParams = new URLSearchParams(window.location.search);
         const plan = urlParams.get('plan');
         const price = urlParams.get('price');
